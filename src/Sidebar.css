@@ -1,7 +1,7 @@
 .sidebar{
     display: flex;
     flex-direction: column;
-    flex: 0.5;
+    flex: 0.35;
 }
 .sidebar__search{
     display: flex;
@@ -41,4 +41,9 @@
 .sidebar__headerRight > .MuiSvgIcon-root {
     margin-right: 2vw;
     font-size: 24px !important;
+}
+.sidebar__chats{
+    background-color: white;
+    flex: 1;
+    overflow: scroll;
 }
