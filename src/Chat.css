@@ -33,7 +33,7 @@
     background-repeat: no-repeat;
     background-position: center;
     padding: 30px;
-    overflow: scroll;
+    overflow: hidden;
 }
 .chat_message{
     position: relative;
@@ -57,4 +57,28 @@
 .chat_timeStamp{
     font-size: xx-small;
     margin-left: 10px ;
+}
+.chat_footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    border: 1px solid lightgray;
+}
+.chat_footer > form {
+    display: flex;
+    flex: 1;
+}
+.chat_footer > form > input {
+    flex: 1;
+    border-radius: 30px;
+    padding: 10px;
+    border: none;
+}
+.chat_footer > form > button{
+    display: none;
+}
+.chat_footer > .MuiSvgIcon-root {
+ padding: 10px;
+ color: gray;
 }
