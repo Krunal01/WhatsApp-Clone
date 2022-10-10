@@ -6,11 +6,13 @@ import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import AttachFile from "@material-ui/icons/AttachFile";
 import "./Chat.css";
 import { InsertEmoticon, Mic } from "@material-ui/icons";
+import { useParams } from "react-router-dom";
 // import MicIcon from "@material-ui/MicIcon";
 
 function Chat() {
   const [input, setInput] = useState("");
   const [seed, setSeed] = useState("");
+  const { roomId } = useParams();
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
   }, []);
