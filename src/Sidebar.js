@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Sidebar.css";
 import { Avatar } from "@material-ui/core";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge";
@@ -9,8 +9,19 @@ import SearchOutlined from "@material-ui/icons/SearchOutlined";
 // import DonutLargeIcon from "@material-ui/core/icons/DonutLargeIcon";
 
 import SidebarChat from "./SidebarChat";
-
+import db from "./firebase";
 function Sidebar() {
+  const [rooms, setRooms] = useState([]);
+  useEffect(() => {
+    db.collection("rooms").onSnapshot((snapshot) =>
+      setRooms(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      )
+    );
+  }, []);
   return (
     <div className="sidebar">
       {/* <h1>Sidebar</h1> */}
@@ -39,9 +50,9 @@ function Sidebar() {
 
       <div className="sidebar__chats">
         <SidebarChat addNewChat />
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
+        {rooms.map((room) => (
+          <SidebarChat key={room.id} id={room.id} name={room.data.name} />
+        ))}
       </div>
     </div>
   );
