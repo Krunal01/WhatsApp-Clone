@@ -5,11 +5,14 @@ import Sidebar from "./Sidebar";
 import Chat from "./Chat";
 // import { Route, Router } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+// import { useState } from "react";
 import Login from "./Login";
+import { StateContext, useStateValue } from "./StateProvider";
+import { useContext } from "react";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [{ user }, dispatch] = useStateValue();
+
   return (
     <div className="App">
       {!user ? (

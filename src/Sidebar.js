@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Sidebar.css";
 import { Avatar } from "@material-ui/core";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge";
@@ -10,17 +10,24 @@ import SearchOutlined from "@material-ui/icons/SearchOutlined";
 
 import SidebarChat from "./SidebarChat";
 import db from "./firebase";
+// import { useStateValue } from "react";
+import { StateContext } from "./StateProvider";
+
 function Sidebar() {
   const [rooms, setRooms] = useState([]);
+  const [{ user }, dispatch] = useContext(StateContext);
+  // console.log(state);
+  // let state = {};
   useEffect(() => {
-    const unsubscribe = db.collection("rooms").onSnapshot((snapshot) =>
-      setRooms(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      )
-    );
+    const unsubscribe = db.collection("rooms").onSnapshot((snapshot) => {
+      console.log(snapshot.docs.map((_) => console.log(_.data())));
+      let nArray = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        data: doc.data(),
+      }));
+
+      setRooms(nArray);
+    });
     return () => {
       unsubscribe();
     };
@@ -30,7 +37,7 @@ function Sidebar() {
       {/* <h1>Sidebar</h1> */}
 
       <div className="sidebar__header">
-        <Avatar />
+        <Avatar src={user?.photoURL} />
         <div className="sidebar__headerRight">
           <IconButton>
             <DonutLargeIcon />
