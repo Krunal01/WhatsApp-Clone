@@ -4,6 +4,7 @@
     flex-direction: column;
     /* background-color: blue; */
     /* background-image: url(''); */
+    overflow:inherit;
 }
 .chat_header{
     display: flex;
