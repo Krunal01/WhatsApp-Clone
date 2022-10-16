@@ -7,7 +7,9 @@ import AttachFile from "@material-ui/icons/AttachFile";
 import "./Chat.css";
 import { InsertEmoticon, Mic } from "@material-ui/icons";
 import { useParams } from "react-router-dom";
-import db from "./firebase";
+import db from "./ifirebase";
+// import firebase from "firebase";
+import { useStateValue } from "./StateProvider";
 // import MicIcon from "@material-ui/MicIcon";
 
 function Chat() {
@@ -16,6 +18,7 @@ function Chat() {
   const { roomId } = useParams();
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
+  const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
     if (roomId) {
@@ -26,12 +29,14 @@ function Chat() {
       db.collection("rooms")
         .doc(roomId)
         .collection("messages")
-        .orderBy("timestamp", "asc")
-        .onSnapshot((snapshot) =>
-          setMessages(snapshot.docs.map((doc) => doc.data()))
-        );
+        .orderBy("time", "asc")
+        .onSnapshot((snapshot) => {
+          console.log("this is new ", messages);
+          setMessages(snapshot.docs.map((doc) => doc.data()));
+        });
     }
   }, [roomId]);
+
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
   }, []);
@@ -39,6 +44,14 @@ function Chat() {
   const sendMessage = (e) => {
     e.preventDefault();
     console.log("You type ", input);
+
+    db.collection("rooms").doc(roomId).collection("messages").add({
+      message: input,
+      name: user.displayName,
+      time: new Date(),
+      // : firebase.firestore.FeildValue.servertimestamp(),
+    });
+
     setInput(" ");
   };
 
@@ -72,7 +85,8 @@ function Chat() {
             <span className="chat_name">{message.name}</span>
             {message.message}
             <span className="chat_timeStamp">
-              {new Date(message.timestamp?.toDate()).toUTCString()}
+              3.53pm
+              {/* {new Date(message.timestamp?.toDate()).toUTCString()} */}
             </span>
           </p>
         ))}
@@ -82,7 +96,7 @@ function Chat() {
         <InsertEmoticon />
         <form>
           <input
-            vlaue={input}
+            value={input}
             onChange={(e) => setInput(e.target.value)}
             type="text"
             placeholder="Type a message"

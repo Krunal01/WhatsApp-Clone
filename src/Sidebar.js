@@ -9,7 +9,7 @@ import SearchOutlined from "@material-ui/icons/SearchOutlined";
 // import DonutLargeIcon from "@material-ui/core/icons/DonutLargeIcon";
 
 import SidebarChat from "./SidebarChat";
-import db from "./firebase";
+import db from "./ifirebase";
 // import { useStateValue } from "react";
 import { StateContext } from "./StateProvider";
 
