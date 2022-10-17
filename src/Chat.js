@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import db from "./ifirebase";
 // import firebase from "firebase";
 import { useStateValue } from "./StateProvider";
+import { displayDate } from "./util/helper";
 // import MicIcon from "@material-ui/MicIcon";
 
 function Chat() {
@@ -43,16 +44,15 @@ function Chat() {
 
   const sendMessage = (e) => {
     e.preventDefault();
-    console.log("You type ", input);
-
+    if (!input.trim()) return;
     db.collection("rooms").doc(roomId).collection("messages").add({
       message: input,
       name: user.displayName,
-      time: new Date(),
+      time: new Date().toString(),
       // : firebase.firestore.FeildValue.servertimestamp(),
     });
 
-    setInput(" ");
+    setInput("");
   };
 
   return (
@@ -65,7 +65,7 @@ function Chat() {
         />
         <div className="chat_headerInfo">
           <h3>{roomName}</h3>
-          <p>Last seen ...</p>
+          <p>Last seen {displayDate(messages[messages.length - 1]?.time)}</p>
         </div>
         <div className="chat_headerRight">
           <Iconbutton>
@@ -104,6 +104,9 @@ function Chat() {
             onChange={(e) => setInput(e.target.value)}
             type="text"
             placeholder="Type a message"
+            autoFocus
+            aria-autocomplete="false"
+            autoComplete="false"
           />
           <button onClick={sendMessage} type="submit">
             Send a message
