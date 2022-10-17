@@ -6,6 +6,7 @@
     /* flex: 0.35; */
     /* height: 920px; */
     height: 100%;
+    /* width: 30%; */
     width: 30%;
     /* border: 5px solid red; */
 }
@@ -42,17 +43,20 @@
     padding: 30px 10px;
     /* border-right: 1px solid lightgray; */
     /* border: 1px solid black; */ 
+    /* border: 5px solid yellow; */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* border: 5px solid yellow; */
     height: 10%;
     padding: 3%;
-    padding-top: 5%;
+    /* padding-top: 5%; */
+    padding-top: 0%;
     padding-bottom: 0%;
     /* margin: 35px; */
     /* padding-top: 50px 400px; */
     /* padding: 50px; */
+    user-select: none;
+    cursor: pointer;
 }
 .sidebar__headerRight{
     display: flex;
@@ -66,7 +70,7 @@
 }
 .sidebar__chats{
     background-color: white;
-    /* flex: 1; */
+    flex: 1;
     overflow: scroll    ;
     /* overflow: hidden; */
     /* border: 5px solid green; */
