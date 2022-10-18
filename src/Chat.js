@@ -32,7 +32,6 @@ function Chat() {
         .collection("messages")
         .orderBy("time", "asc")
         .onSnapshot((snapshot) => {
-          console.log("this is new ", messages);
           setMessages(snapshot.docs.map((doc) => doc.data()));
         });
     }
@@ -71,9 +70,9 @@ function Chat() {
           <Iconbutton>
             <SearchOutlined />
           </Iconbutton>
-          <Iconbutton>
+          {/* <Iconbutton>
             <AttachFile />
-          </Iconbutton>
+          </Iconbutton> */}
           <Iconbutton>
             <MoreVertIcon />
           </Iconbutton>
@@ -86,7 +85,8 @@ function Chat() {
               message.name === user.displayName && "chat_reciever"
             }`}
           >
-            <span className="chat_name">{message.name}</span>
+            {/* {message.name} */}
+            <span className="chat_name"></span>
             {message.message}
             <span className="chat_timeStamp">
               3.53pm
@@ -98,6 +98,9 @@ function Chat() {
 
       <div className="chat_footer">
         <InsertEmoticon />
+        <Iconbutton>
+          <AttachFile />
+        </Iconbutton>
         <form>
           <input
             value={input}
@@ -112,7 +115,7 @@ function Chat() {
             Send a message
           </button>
         </form>
-        <Mic />
+        <Mic className="MIC" />
       </div>
     </div>
   );

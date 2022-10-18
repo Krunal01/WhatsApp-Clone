@@ -124,4 +124,10 @@
 .chat_footer > .MuiSvgIcon-root {
   padding: 10px;
   color: gray;
+  height: 2rem;
+  width: 2rem;
+}
+
+.MIC {
+  margin-right: 1.5rem;
 }

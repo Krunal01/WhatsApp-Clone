@@ -1,0 +1,90 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Dixit",
+      "lastName": "Dixit",
+      "password": "Dixit@123",
+      "email": "dixit@gmail.com"
+    },
+    {
+      "id": 2,
+      "firstName": "krunal",
+      "lastName": "krunal",
+      "password": "krunal@123",
+      "email": "krunal@gmail.com"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "productName": "Nantucket Apple Juice",
+      "company": "Fadeo",
+      "ownerName": "Henry Gorey",
+      "category": "Site Furnishings"
+    },
+    {
+      "id": 2,
+      "productName": "Chocolate - Semi Sweet",
+      "company": "Ntag",
+      "ownerName": "Fanya Caruth",
+      "category": "Roofing (Metal)"
+    },
+    {
+      "id": 3,
+      "productName": "Pepper - Green, Chili",
+      "company": "Rhybox",
+      "ownerName": "Sheila-kathryn Camier",
+      "category": "Drywall & Acoustical (FED)"
+    },
+    {
+      "id": 4,
+      "productName": "Venison - Striploin",
+      "company": "Mycat",
+      "ownerName": "Corissa MacMechan",
+      "category": "Site Furnishings"
+    },
+    {
+      "id": 5,
+      "productName": "Apron",
+      "company": "Mymm",
+      "ownerName": "Florie Martijn",
+      "category": "Landscaping & Irrigation"
+    },
+    {
+      "id": 6,
+      "productName": "Wine - Acient Coast Caberne",
+      "company": "Eimbee",
+      "ownerName": "Caprice Munton",
+      "category": "Painting & Vinyl Wall Covering"
+    },
+    {
+      "id": 7,
+      "productName": "Bread - Sticks, Thin, Plain",
+      "company": "Browsezoom",
+      "ownerName": "Benedikt Summerlie",
+      "category": "Temp Fencing, Decorative Fencing and Gates"
+    },
+    {
+      "id": 8,
+      "productName": "Gatorade - Orange",
+      "company": "Dynazzy",
+      "ownerName": "Gill Yashin",
+      "category": "Casework"
+    },
+    {
+      "id": 9,
+      "productName": "Liners - Baking Cups",
+      "company": "Wikibox",
+      "ownerName": "Mohandis Thelwll",
+      "category": "Curb & Gutter"
+    },
+    {
+      "id": 10,
+      "productName": "Puree - Passion Fruit",
+      "company": "Linkbridge",
+      "ownerName": "Cory Cahillane",
+      "category": "Ornamental Railings"
+    }
+  ]
+}

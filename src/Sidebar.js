@@ -16,11 +16,8 @@ import { StateContext } from "./StateProvider";
 function Sidebar() {
   const [rooms, setRooms] = useState([]);
   const [{ user }, dispatch] = useContext(StateContext);
-  // console.log(state);
-  // let state = {};
   useEffect(() => {
     const unsubscribe = db.collection("rooms").onSnapshot((snapshot) => {
-      console.log(snapshot.docs.map((_) => console.log(_.data())));
       let nArray = snapshot.docs.map((doc) => ({
         id: doc.id,
         data: doc.data(),
