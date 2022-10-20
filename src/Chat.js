@@ -5,12 +5,16 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import AttachFile from "@material-ui/icons/AttachFile";
 import "./Chat.css";
-import { InsertEmoticon, Mic } from "@material-ui/icons";
+import { InsertEmoticon, Mic, RepeatOne } from "@material-ui/icons";
 import { useParams } from "react-router-dom";
 import db from "./ifirebase";
 // import firebase from "firebase";
 import { useStateValue } from "./StateProvider";
 import { displayDate } from "./util/helper";
+import moment from "moment";
+import Picker from "@emoji-mart/react";
+import data from "@emoji-mart/data";
+import EmojiPicker from "emoji-picker-react";
 // import MicIcon from "@material-ui/MicIcon";
 
 function Chat() {
@@ -20,6 +24,7 @@ function Chat() {
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
   const [{ user }, dispatch] = useStateValue();
+  const [shoudlShowEmoji, setShouldShowEmoji] = useState(false);
 
   useEffect(() => {
     if (roomId) {
@@ -54,13 +59,12 @@ function Chat() {
     setInput("");
   };
 
+  // alert(user.displayName);
   return (
     <div className="chat">
       <div className="chat_header">
         <Avatar
-          src={`https://avatars.dicebear.com/api/human/${Math.floor(
-            Math.random() * 5000
-          )}.svg`}
+          src={`https://avatars.dicebear.com/api/human/${roomName}.svg`}
         />
         <div className="chat_headerInfo">
           <h3>{roomName}</h3>
@@ -85,19 +89,44 @@ function Chat() {
               message.name === user.displayName && "chat_reciever"
             }`}
           >
+            {console.log({ message })}
             {/* {message.name} */}
             <span className="chat_name"></span>
             {message.message}
+            <br />
             <span className="chat_timeStamp">
-              3.53pm
+              {moment(message.time).format("hh:mm A")}
               {/* {new Date(message.timestamp?.toDate()).toUTCString()} */}
             </span>
           </p>
         ))}
       </div>
-
+      {/* <Picker /> */}
+      {shoudlShowEmoji && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: "4rem",
+            left: "26rem",
+            zIndex: "99",
+          }}
+        >
+          <EmojiPicker
+            height={500}
+            onEmojiClick={(emoji) => {
+              console.log(emoji);
+              setInput(input + emoji.emoji);
+            }}
+            width={400}
+          />
+        </div>
+      )}
       <div className="chat_footer">
-        <InsertEmoticon />
+        <Iconbutton onClick={() => setShouldShowEmoji((prev) => !prev)}>
+          <InsertEmoticon />
+        </Iconbutton>
+
+        {/* <Picker onEmojiSelect={console.log} /> */}
         <Iconbutton>
           <AttachFile />
         </Iconbutton>
@@ -115,7 +144,9 @@ function Chat() {
             Send a message
           </button>
         </form>
-        <Mic className="MIC" />
+        <Iconbutton>
+          <Mic className="MIC" />
+        </Iconbutton>
       </div>
     </div>
   );

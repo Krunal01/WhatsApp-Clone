@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 function SidebarChat({ id, name, addNewChat }) {
   const [seed, setSeed] = useState("");
+  // alert(name);
+  // console.log(name);
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
   }, []);
@@ -28,7 +30,7 @@ function SidebarChat({ id, name, addNewChat }) {
         }}
       >
         <div className="sidebarChat">
-          <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
+          <Avatar src={`https://avatars.dicebear.com/api/human/${name}.svg`} />
           <div className="sidebarChat__info">
             <h2>{name}</h2>
             <p>Last message...</p>

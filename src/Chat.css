@@ -41,6 +41,7 @@
 .chat_headerInfo > h3 {
   font-weight: 500;
   margin-bottom: 3px;
+  text-transform: capitalize;
 }
 .chat_headerInfo > p {
   color: gray;
@@ -78,13 +79,26 @@
 .chat_message {
   position: relative;
   padding: 10px;
+  padding-right: 3rem;
   font-size: 16px;
   background-color: #ffff;
   border-radius: 10px;
   width: fit-content;
+  z-index: 10;
   margin-bottom: 30px;
   user-select: none;
 }
+
+/* .chat_message::after {
+  content: url("./assets/svg/message-tail.svg");
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 1em;
+  width: 1em;
+  z-index: 33;
+  /* background-color: white; */
+/* } */
 .chat_reciever {
   margin-left: auto;
   background-color: #dcf8c6;
@@ -96,6 +110,9 @@
   font-size: xx-small;
 }
 .chat_timeStamp {
+  position: absolute;
+  right: 5px;
+  bottom: 3px;
   font-size: xx-small;
   margin-left: 10px;
 }
@@ -130,4 +147,7 @@
 
 .MIC {
   margin-right: 1.5rem;
+}
+.MuiSvgIcon-fontSizeInherit {
+  font-size: 2rem;
 }
